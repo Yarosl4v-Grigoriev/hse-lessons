@@ -1,4 +1,6 @@
 
+import TaskItem from './TaskItem'
+
 type TaskListProps = {
     title: string
 }
@@ -18,20 +20,23 @@ function TaskList({ title }: TaskListProps) {
         { id: '3', title: 'Task 3', done: true },
     ]
 
-    // ДЗ Перенсти контейнер в компонент TaskItem (удалить его вызов в App)
-    // Передать как проп title, done (id желателтьно)
-    // Почитать про key
+    // ДЗ Перенсти контейнер в компонент TaskItem (удалить его вызов в App) +
+    // Передать как проп title, done (id желателтьно) +
+    // Почитать про key +
     
     return (
-        <div>
-            {tasks.map((task) => (
-                <div key={task.id}>
-                    <h1>{task.title}</h1>
-                    <p>{task.done+''}</p>
-                </div>
-            ))}
-        </div>
-    )
+    <div>
+        <h2>{title}</h2>
+        {tasks.map((task) => (
+            <TaskItem
+                key={task.id}
+                id={task.id}
+                title={task.title}
+                done={task.done}
+            />
+        ))}
+    </div>
+)
 }
 
 export default TaskList
